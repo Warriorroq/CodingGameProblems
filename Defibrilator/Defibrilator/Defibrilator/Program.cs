@@ -3,8 +3,8 @@ class Solution
 {
     static void Main(string[] args)
     {
-        float LON = float.Parse(Console.ReadLine());
-        float LAT = float.Parse(Console.ReadLine());
+        float LON = floatParse(Console.ReadLine());
+        float LAT = floatParse(Console.ReadLine());
         int N = int.Parse(Console.ReadLine());
         DEFIB[] defibs = new DEFIB[N];
         for (int i = 0; i < N; i++)
@@ -16,6 +16,11 @@ class Solution
                 myDefib = a;
 
         Console.WriteLine(myDefib.name);
+    }
+    public static float floatParse(string num)
+    {
+        string[] nums = num.Split(',');
+        return float.Parse($"{nums[0]}.{nums[1]}");
     }
     public struct DEFIB {
         public int index;
@@ -31,14 +36,14 @@ class Solution
             name = ssd[1];
             adress = ssd[2];
             phoneNum = ssd[3];
-            Longitude = float.Parse(ssd[4]);
-            Latitude = float.Parse(ssd[5]);
+            Longitude = floatParse(ssd[4]);
+            Latitude = floatParse(ssd[5]);
         }
-        public float distance(float latitude, float longitude)
+        public double distance(float latitude, float longitude)
         {
-            float x = (float)((Longitude - longitude) * Math.Cos((latitude + Latitude) / 2));
-            float y = Latitude - latitude;
-            return (float)Math.Sqrt(x * x + y * y) * 6371;
+            double x = (Longitude - longitude) * Math.Cos((latitude + Latitude) / 2);
+            double y = Latitude - latitude;
+            return Math.Sqrt(x * x + y * y) * 6371;
         }
         public override string ToString()
         {
