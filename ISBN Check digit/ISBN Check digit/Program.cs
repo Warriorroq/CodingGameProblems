@@ -33,6 +33,10 @@ namespace ISBN_Check_digit
                 else
                     sum += ISBN[13 - i] * 3;
             }
+
+            if (ISBN[12] == 10)
+                return -1;
+
             return sum;
         }
         public static int[] ConvertDigits(string ISBN)
