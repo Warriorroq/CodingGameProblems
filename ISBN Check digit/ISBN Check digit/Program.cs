@@ -51,6 +51,22 @@ namespace ISBN_Check_digit
             }
             return array;
         }
+        public static bool IsValid(string ISBN)
+        {
+            if (ISBN.Contains('_'))
+                return false;
+
+            int isbn = GetSumISBN(ConvertDigits(ISBN));
+
+            if (ISBN.Length == 10 && isbn % 11 != 0)
+                return false;
+            else if (ISBN.Length == 13 && isbn % 10 != 0)
+                return false;
+            else if (ISBN.Length != 13 && ISBN.Length != 10)
+                return false;
+
+            return true;
+        }
         public static void Main(string[] args)
         {
             int N = int.Parse(Console.ReadLine());
@@ -58,20 +74,8 @@ namespace ISBN_Check_digit
             for (int i = 0; i < N; i++)
             {
                 string ISBN = Console.ReadLine();
-                if (ISBN.Contains('_'))
-                {
+                if (!IsValid(ISBN))
                     invalid.Add(ISBN);
-                }
-                else
-                {
-                    int isbn = GetSumISBN(ConvertDigits(ISBN));
-                    if (ISBN.Length == 10 && isbn % 11 != 0)
-                        invalid.Add(ISBN);
-                    else if (ISBN.Length == 13 && isbn % 10 != 0)
-                        invalid.Add(ISBN);
-                    else if (ISBN.Length != 13 && ISBN.Length != 10)
-                        invalid.Add(ISBN);
-                }
             }
 
             Console.WriteLine($"{invalid.Count} invalid:");
