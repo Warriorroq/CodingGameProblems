@@ -1,0 +1,9 @@
+{
+  "name": "telephone-numbers",
+  "version": "0.0.0",
+  "description": "telephoneNumbers",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  }
+}
