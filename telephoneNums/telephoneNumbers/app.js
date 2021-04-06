@@ -4,16 +4,16 @@ function getRandomInt(min, max) {
 }
 
 var N = getRandomInt(1, 15);
-var tokens = new Set();
+var arraySet = new Set();
 
 for (var i = 0; i < N; i++) {
-    var telephone = getRandomInt(1000000000, 9999999999).toString();
-    console.log(telephone)
-    for (var j = 1; j <= telephone.length; j++) {
-        tokens.add(telephone.substring(0, j))
+    var number = getRandomInt(1000000000, 9999999999).toString();
+    console.log(number)
+    for (var j = 1; j <= number.length; j++) {
+        arraySet.add(number.substring(0, j))
     }
 
 }
-console.log(tokens.size)
-console.log(tokens)
+console.log(arraySet.size)
+console.log(arraySet)
 while (true);
